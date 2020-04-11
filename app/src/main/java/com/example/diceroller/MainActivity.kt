@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var diceImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val rollButton: Button = findViewById(R.id.roll_button)
