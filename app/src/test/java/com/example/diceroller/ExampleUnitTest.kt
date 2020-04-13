@@ -1,5 +1,7 @@
 package com.example.diceroller
 
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,10 +13,13 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
 
+    val context = ApplicationProvider.getApplicationContext<Context>()
+
     @Test
     fun rollDiceFunctionIsWorking(){
 
         val mainActivityClass = MainActivity()
+        mainActivityClass.rollDice()
 
     }
 }

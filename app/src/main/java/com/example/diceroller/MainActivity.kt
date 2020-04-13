@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         rollButton.setOnClickListener {
             rollDice()
             showToast()
+            customAdapter.notifyDataSetChanged()
         }
         diceImage = findViewById(R.id.dice_image)
         resultListView = findViewById(R.id.results_list)
@@ -48,9 +49,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     var lastResultsImageList: ArrayList<Int> = ArrayList<Int>()
-    private fun rollDice() {
-        val randomDiceValue = Random().nextInt(6) + 1
-        val diceDrawableResource = when (randomDiceValue){
+    fun rollDice() {
+        val diceDrawableResource = when (Random().nextInt(6) + 1){
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -60,10 +60,9 @@ class MainActivity : AppCompatActivity() {
         }
         diceImage.setImageResource(diceDrawableResource)
         lastResultsImageList.add(0, diceDrawableResource)
-        customAdapter.notifyDataSetChanged()
     }
 
-    private fun showToast(){
+    fun showToast(){
         if (lastResultsImageList.size > 1){
             if (lastResultsImageList[0] == lastResultsImageList[1]){
                 val toast = Toast.makeText(applicationContext, "You got twice in a roll", Toast.LENGTH_SHORT)
